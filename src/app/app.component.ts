@@ -6,10 +6,13 @@ import { RootService } from './root.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  
   title = 'crud';
   constructor(private rootService : RootService) { }
+  
   ngOnInit() {
     //testing get data
+    /*
     this.rootService.getAPIData().subscribe((response)=>{
         console.log('response is ', response)
     },(error) => {
@@ -20,7 +23,8 @@ export class AppComponent implements OnInit {
       console.log('response from post data is ', response);
     },(error)=>{
       console.log('error during post is ', error)
+      
     })
-
+*/
   }
 }
