@@ -18,6 +18,7 @@ export class LoginformComponent implements OnInit {
   }
   
   loginUser() {
+    console.log("we made it");
     this.LoginService.postAPIData(this.accountForm.value.email, this.accountForm.value.password).subscribe((response)=>{
       console.log('response from post data is ', response);
     },(error)=>{
