@@ -125,6 +125,7 @@ html {
     display: inline-block;
     font-size: 16px;
     margin: 5px;
+    margin-bottom: 20px;
     width: 85%;
     border: 2px solid #f6f6f6;
     -webkit-transition: all 0.5s ease-in-out;
@@ -144,7 +145,7 @@ html {
   input[type=text]:placeholder {
     color: #cccccc;
   }
-  
+
   
   
   /* ANIMATIONS */
@@ -204,7 +205,9 @@ html {
     -moz-animation-duration:1s;
     animation-duration:1s;
   }
-  
+  .login {
+    margin-bottom: 20px;
+  }
   .fadeIn.first {
     -webkit-animation-delay: 0.4s;
     -moz-animation-delay: 0.4s;

@@ -11,20 +11,5 @@ export class AppComponent implements OnInit {
   constructor(private rootService : RootService) { }
   
   ngOnInit() {
-    //testing get data
-    /*
-    this.rootService.getAPIData().subscribe((response)=>{
-        console.log('response is ', response)
-    },(error) => {
-        console.log('error is ', error)
-    })
-    //testing post data
-    this.rootService.postAPIData().subscribe((response)=>{
-      console.log('response from post data is ', response);
-    },(error)=>{
-      console.log('error during post is ', error)
-      
-    })
-*/
   }
 }

@@ -1,0 +1,12 @@
+.nav-items {
+    justify-content: flex-start;
+    width: 100%;
+}
+.nav-item {
+    align-self: center;
+    padding-left: 10px;
+}
+.nav-logout {
+    display: flex;
+    justify-self: flex-end;
+}

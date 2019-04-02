@@ -1,8 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="wrapper fadeInDown">
@@ -17,8 +14,8 @@
     <!-- Login Form -->
     <form [formGroup]="accountForm" (ngSubmit)='loginUser()' method="POST">
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="Email" formControlName="email">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password" formControlName="password"><br>
-      <button type="submit" class="fadeIn fourth" value="Log In">Login</button>
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password" formControlName="password">
+      <button type="submit" class="fadeIn fourth btn btn-success login" value="Log In">Login</button>
     </form>
 
     <!-- Remind Passowrd -->
