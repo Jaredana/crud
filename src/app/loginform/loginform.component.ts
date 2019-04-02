@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from "@angular/forms";
 import { LoginService } from './login.service';
-import { HttpClient } from '@angular/common/http';
-
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-loginform',
@@ -14,7 +13,7 @@ export class LoginformComponent implements OnInit {
     email: new FormControl(''),
     password: new FormControl(''),
   });
-  constructor(private LoginService: LoginService, private http: HttpClient) { }
+  constructor(private LoginService: LoginService, private router: Router) { }
   ngOnInit() {
     
   }
@@ -24,6 +23,7 @@ export class LoginformComponent implements OnInit {
       var token = response.token;
       console.log('response from post data is ', response);
       sessionStorage.setItem('token', token);
+      this.router.navigateByUrl('home')
     },(error)=>{
       console.log('error during post is ', error);
     })

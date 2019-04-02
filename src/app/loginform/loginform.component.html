@@ -17,8 +17,8 @@
     <!-- Login Form -->
     <form [formGroup]="accountForm" (ngSubmit)='loginUser()' method="POST">
       <input type="text" id="login" class="fadeIn second" name="email" placeholder="Email" formControlName="email">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password" formControlName="password">
-      <input type="submit" class="fadeIn fourth" value="Log In" routerLink='home'>
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password" formControlName="password"><br>
+      <button type="submit" class="fadeIn fourth" value="Log In">Login</button>
     </form>
 
     <!-- Remind Passowrd -->

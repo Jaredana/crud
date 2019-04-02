@@ -11,7 +11,6 @@ export class LoginService {
   helper = new JwtHelperService();
   public isAuthenticated(): boolean {
     const token = sessionStorage.getItem('token');
-    console.log(token);
     // Check whether the token is expired and return
     // true or false
     return !this.helper.isTokenExpired(token);
