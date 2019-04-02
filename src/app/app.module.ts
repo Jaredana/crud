@@ -5,19 +5,39 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginformComponent } from './loginform/loginform.component';
 import { ReactiveFormsModule } from "@angular/forms";
-import { FormGroup, FormControl } from "@angular/forms";
+import { HomeComponent } from './home/home.component';
+import { JwtModule, JwtHelperService, JwtModuleOptions } from '@auth0/angular-jwt';
+import { AuthGuardService } from './loginform/auth-guard.service';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
+const JWT_Module_Options: JwtModuleOptions = {
+  config: {
+      tokenGetter: tokenGetter,
+      whitelistedDomains: ['home']
+  }
+};
 @NgModule({
   declarations: [
     AppComponent,
-    LoginformComponent
+    LoginformComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot(JWT_Module_Options),
   ],
-  providers: [],
+  providers: [
+    AuthGuardService,
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule { 
+  
+}

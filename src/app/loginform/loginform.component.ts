@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from "@angular/forms";
 import { LoginService } from './login.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-loginform',
@@ -12,18 +14,19 @@ export class LoginformComponent implements OnInit {
     email: new FormControl(''),
     password: new FormControl(''),
   });
-  constructor(private LoginService: LoginService) { }
+  constructor(private LoginService: LoginService, private http: HttpClient) { }
   ngOnInit() {
     
   }
-  
   loginUser() {
-    console.log("we made it");
-    this.LoginService.postAPIData(this.accountForm.value.email, this.accountForm.value.password).subscribe((response)=>{
+    this.LoginService.postAPIData(this.accountForm.value.email, this.accountForm.value.password).subscribe(
+      (response)=>{
+      var token = response.token;
       console.log('response from post data is ', response);
+      sessionStorage.setItem('token', token);
     },(error)=>{
-      console.log('error during post is ', error)
-      
+      console.log('error during post is ', error);
     })
   }
+
 }
