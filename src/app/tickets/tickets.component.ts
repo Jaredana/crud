@@ -14,16 +14,27 @@ export class TicketsComponent implements OnInit {
     Date: new FormControl(''),
     User_ID: new FormControl(''),
   });
-  constructor(private TicketService: TicketsService) { }
-
-  ngOnInit() {
+  constructor(private TicketService: TicketsService) { 
+    
   }
-  //this may not be working due to the fact that it is expecting info to be in body and not params. needs more research
-  createticket(ID, Issue, Location, Date, User_ID){
-    this.TicketService.maketickets(ID, Issue, Location, Date, User_ID).subscribe(
+  tickets; 
+  ngOnInit() {
+    this.gettickets();
+  }
+  gettickets(){
+    this.TicketService.gettickets().subscribe(
+      (response)=> {
+        this.tickets = response;
+      }, (error)=> {
+        console.log("the error is" + error);
+      }
+    );
+  }
+  //we need to figure out how to use two way binding here so that
+  createticket(){
+    this.TicketService.maketickets(this.ticketForm.value.ID, this.ticketForm.value.Issue, this.ticketForm.value.Location, this.ticketForm.value.Date, this.ticketForm.value.User_ID).subscribe(
       (response)=>{
-        console.log("the response was" + response);
-        console.log("the ticket was" + response.ticket);
+        this.gettickets();
       },(error)=>{
         console.log("the error was" + error);
       })
