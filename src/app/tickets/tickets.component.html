@@ -1,10 +1,10 @@
-<form [formGroup]="ticketForm" (ngSubmit)='createticket()' method="POST">
+<form [formGroup]="ticketForm" (ngSubmit)='createticket()' method="POST" (added) ="gettickets($event)">
   <input type="text" id="ID" class="" name="ID" placeholder="ID" formControlName="ID">
   <input type="text" id="Issue" class="" name="Issue" placeholder="Issue" formControlName="Issue">
   <input type="text" id="Location" class="" name="Location" placeholder="Location" formControlName="Location">
   <input type="text" id="Date" class="" name="Date" placeholder="Date" formControlName="Date">
   <input type="text" id="User_ID" class="" name="User_ID" placeholder="User_ID" formControlName="User_ID">
-  <button type="submit" class="fadeIn fourth btn btn-success login" value="Submit Ticket" (click)="gettickets()">Submit</button>
+  <button type="submit" class="fadeIn fourth btn btn-success login" value="Submit Ticket">Submit</button>
 </form>
 
 <div class ="table-responsive" id="sailorTableArea">
@@ -19,12 +19,12 @@
       </tr>
     </thead>
     <tbody >
-        <tr class="ticketdata" *ngFor="let ticket of tickets">
-          <td class="ticketdata">{{ ticket.ID }} </td>
-          <td class="ticketdata">{{ ticket.Issue }}</td>
-          <td class="ticketdata">{{ ticket.Location }}</td>
-          <td class="ticketdata">{{ ticket.Date }}</td>
-          <td class="ticketdata">{{ ticket.User_ID }}</td>
+        <tr class="ticketdata" *ngFor="let ticket of tickets | async">
+          <td class="ticketdata">{{ ticket.ID}} </td>
+          <td class="ticketdata">{{ ticket.Issue}}</td>
+          <td class="ticketdata">{{ ticket.Location}}</td>
+          <td class="ticketdata">{{ ticket.Date}}</td>
+          <td class="ticketdata">{{ ticket.User_ID}}</td>
         </tr>
     </tbody>
   </table>

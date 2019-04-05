@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {TicketsService} from './tickets.service';
+import { Ticket} from '../ticket'
 import { FormGroup, FormControl } from "@angular/forms";
+import { Observable, Observer } from 'rxjs';
 @Component({
   selector: 'app-tickets',
   templateUrl: './tickets.component.html',
@@ -14,29 +16,28 @@ export class TicketsComponent implements OnInit {
     Date: new FormControl(''),
     User_ID: new FormControl(''),
   });
-  constructor(private TicketService: TicketsService) { 
+
+  @Output() added: EventEmitter<any> = new EventEmitter(true);
+
+  constructor(private TicketService: TicketsService) {}
+  /*tickets = new Observable<any[]>((observer: Observer<any[]>) => {
+    setInterval(() => observer.next(this.ticketstuff()), 10000)
+    console.log(this.TicketService.gettickets())
+  });*/
+  ngOnInit() {
     
   }
-  tickets; 
-  ngOnInit() {
-    this.gettickets();
+
+  get tickets(): Observable<Array<Ticket>>{
+    return this.TicketService.gettickets()
   }
-  gettickets(){
-    this.TicketService.gettickets().subscribe(
-      (response)=> {
-        this.tickets = response;
-      }, (error)=> {
-        console.log("the error is" + error);
-      }
-    );
-  }
+
   //we need to figure out how to use two way binding here so that
   createticket(){
     this.TicketService.maketickets(this.ticketForm.value.ID, this.ticketForm.value.Issue, this.ticketForm.value.Location, this.ticketForm.value.Date, this.ticketForm.value.User_ID).subscribe(
       (response)=>{
-        this.gettickets();
+        console.log("we emitted:" + this.added.emit());
       },(error)=>{
-        console.log("the error was" + error);
-      })
+        console.log("the error was" + error);})
   }
 }
