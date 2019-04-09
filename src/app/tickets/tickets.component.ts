@@ -20,24 +20,35 @@ export class TicketsComponent implements OnInit {
   @Output() added: EventEmitter<any> = new EventEmitter(true);
 
   constructor(private TicketService: TicketsService) {}
-  /*tickets = new Observable<any[]>((observer: Observer<any[]>) => {
-    setInterval(() => observer.next(this.ticketstuff()), 10000)
-    console.log(this.TicketService.gettickets())
-  });*/
+  tickets = [];
+ 
+  
+
   ngOnInit() {
-    
+    this.gettickets();
   }
 
-  get tickets(): Observable<Array<Ticket>>{
-    return this.TicketService.gettickets()
+  gettickets(){
+    let test = this.TicketService.gettickets()
+    setTimeout(()=> {
+      test.subscribe({
+        next(response){
+          console.log("response was" + response[0]);
+        },
+        error(err) {
+          console.log("err was" + err);
+        }
+      })
+    }, 1000)
   }
 
   //we need to figure out how to use two way binding here so that
   createticket(){
     this.TicketService.maketickets(this.ticketForm.value.ID, this.ticketForm.value.Issue, this.ticketForm.value.Location, this.ticketForm.value.Date, this.ticketForm.value.User_ID).subscribe(
       (response)=>{
-        console.log("we emitted:" + this.added.emit());
+        console.log("we emitted:" + this.added.emit(response));
       },(error)=>{
         console.log("the error was" + error);})
+  
   }
 }

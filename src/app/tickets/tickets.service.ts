@@ -8,8 +8,9 @@ import { Ticket} from '../ticket'
 export class TicketsService {
 
   constructor(private http: HttpClient) { }
-  gettickets(): Observable<Array<Ticket>>{
-    return this.http.get<Array<Ticket>>('api/ticket/getticket');
+  
+  gettickets(): Observable<any>{
+    return this.http.get('api/ticket/getticket');
   }
   maketickets(ID, Issue, Location, my_Date, User_ID): Observable<any>{
     return this.http.post('/api/ticket/maketicket', {'ID': ID, 'Issue': Issue,'Location': Location, 'Date': my_Date,'User_ID': User_ID});
