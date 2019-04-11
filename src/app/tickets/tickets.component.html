@@ -1,8 +1,7 @@
 <form [formGroup]="ticketForm" (ngSubmit)='createticket()' method="POST" (added) ="gettickets($event)">
-  <!--<input type="text" id="ID" class="" name="ID" placeholder="ID" formControlName="ID">-->
   <input type="text" id="Issue" class="" name="Issue" placeholder="Issue" formControlName="Issue">
   <input type="text" id="Location" class="" name="Location" placeholder="Location" formControlName="Location">
-  <input type="text" id="Date" class="" name="Date" placeholder="Date" formControlName="Date">
+  <input type="date" id="Date" class="" name="Date" placeholder="Date" formControlName="Date">
   <input type="text" id="User_ID" class="" name="User_ID" placeholder="User_ID" formControlName="User_ID">
   <button type="submit" class="fadeIn fourth btn btn-success login" value="Submit Ticket">Submit</button>
 </form>

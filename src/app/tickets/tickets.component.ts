@@ -19,41 +19,51 @@ export class TicketsComponent implements OnInit {
   @Output() added: EventEmitter<any> = new EventEmitter(true);
 
   constructor(private TicketService: TicketsService) {}
+  ticketobserve = this.TicketService.gettickets()
   tickets = null;
   
   ngOnInit() {
-    let tickets = this.TicketService.gettickets()
     setTimeout(()=> {
-      tickets.subscribe(
+      this.ticketobserve.subscribe(
         (response) => {
           let recieved = JSON.stringify(response.tickets);
           let array = JSON.parse(recieved);
           this.tickets = array;
         })
     }, 100)
-  }
 
-  gettickets(){
-    console.log("getting tickets...");
     this.added.subscribe(
-      (generatorOrNext) => {
-        this.TicketService.gettickets().subscribe(
+      (event) => {
+        console.log("Event Fired" + event);
+        this.ticketobserve.subscribe(
           (response) => {
             let recieved = JSON.stringify(response.tickets);
             let array = JSON.parse(recieved);
             this.tickets = array;
+          }, (err) => {
+            console.log("err getting tickets" + err);
           })
     }, (error) =>{
-        console.log("Error getting tickets" + error);
-    }) 
+        console.log("Error subscribing to eventemitter" + error);
+    })
   }
 
+  gettickets(){
+    console.log("getting tickets...");
+    this.ticketobserve.subscribe(
+    (response) => {
+      let recieved = JSON.stringify(response.tickets);
+      let array = JSON.parse(recieved);
+      this.tickets = array;
+    }, (err) => {
+      console.log("err getting tickets" + err);
+    })
+  }
 
-  //we need to figure out how to use two way binding here so that
   createticket(){
-    this.TicketService.maketickets(this.ticketForm.value.ID, this.ticketForm.value.Issue, this.ticketForm.value.Location, this.ticketForm.value.Date, this.ticketForm.value.User_ID).subscribe(
+    this.TicketService.maketickets(this.ticketForm.value.Issue, this.ticketForm.value.Location, this.ticketForm.value.Date, this.ticketForm.value.User_ID).subscribe(
       (response)=>{
-        console.log("we emitted:" + this.added.emit(JSON.stringify(response)));
+        this.added.emit(JSON.stringify(response));
       },(error)=>{
         console.log("the error was" + error);})
   }

@@ -21,7 +21,6 @@ export class LoginformComponent implements OnInit {
     this.LoginService.postAPIData(this.accountForm.value.email, this.accountForm.value.password).subscribe(
       (response)=>{
       var token = response.token;
-      console.log('response from post data is ', response);
       sessionStorage.setItem('token', token);
       this.router.navigateByUrl('home')
     },(error)=>{
