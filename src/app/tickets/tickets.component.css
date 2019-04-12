@@ -15,4 +15,30 @@ thead,tbody tr {
     width:100%;
     table-layout:fixed;
 }
-
+#editticket {
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+#editticket:hover {
+    text-decoration:none;
+    text-shadow: 1px 1px 1px #555;
+}
+.ticketeditor {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: baseline;
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    min-height: 20%;
+    padding: 20px;
+    box-shadow: 0px 0px 1px 5000px rgba(0,0,0,0.9);
+}
+.formdata {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+}

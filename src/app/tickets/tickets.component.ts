@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewContainerRef } from '@angular/core';
 import {TicketsService} from './tickets.service';
 import { FormGroup, FormControl } from "@angular/forms";
 
@@ -21,7 +21,8 @@ export class TicketsComponent implements OnInit {
   constructor(private TicketService: TicketsService) {}
   ticketobserve = this.TicketService.gettickets()
   tickets = null;
-  
+  EditTicket = false;
+  tickettoedit = null;
   ngOnInit() {
     setTimeout(()=> {
       this.ticketobserve.subscribe(
@@ -66,5 +67,15 @@ export class TicketsComponent implements OnInit {
         this.added.emit(JSON.stringify(response));
       },(error)=>{
         console.log("the error was" + error);})
+  }
+
+//Can change data in view but needs to update ticket using ticketservice.
+  iseditticket(){
+    if (this.EditTicket === true) 
+    return true;
+  }
+  editticket(){
+    if(this.EditTicket == true) console.log('editing ticket' + JSON.stringify(this.tickettoedit.Issue));
+    this.ticketForm.get('Issue').setValue(JSON.stringify(this.tickettoedit.Issue))
   }
 }

@@ -2,7 +2,7 @@
   <input type="text" id="Issue" class="" name="Issue" placeholder="Issue" formControlName="Issue">
   <input type="text" id="Location" class="" name="Location" placeholder="Location" formControlName="Location">
   <input type="date" id="Date" class="" name="Date" placeholder="Date" formControlName="Date">
-  <input type="text" id="User_ID" class="" name="User_ID" placeholder="User_ID" formControlName="User_ID">
+  <input type="text" id="User_ID" class="" name="User_ID" placeholder="User ID" formControlName="User_ID">
   <button type="submit" class="fadeIn fourth btn btn-success login" value="Submit Ticket">Submit</button>
 </form>
 
@@ -19,13 +19,24 @@
     </thead>
     <tbody >
         <tr class="ticketdata" *ngFor="let ticket of tickets">
-          <td class="ticketdata">{{ ticket.ID}} </td>
+          <td class="ticketdata">
+            <a id='editticket' (click)="EditTicket=true;tickettoedit=ticket">{{ticket._id}}</a>
+          </td>
           <td class="ticketdata">{{ ticket.Issue}}</td>
           <td class="ticketdata">{{ ticket.Location}}</td>
-          <td class="ticketdata">{{ ticket.Date}}</td>
+          <td class="ticketdata">{{ ticket.Date | date:'short'}}</td>
           <td class="ticketdata">{{ ticket.User_ID}}</td>
         </tr>
     </tbody>
   </table>
 </div>  
+<div class="ticketeditor" *ngIf='iseditticket()'>
+    <form [formGroup]="ticketForm" (ngSubmit)='editticket()' method="POST" (added)="gettickets($event)">
+        <input type="text" id="Issue" class="formdata" name="Issue" placeholder="Issue" formControlName="Issue">
+        <input type="text" id="Location" class="formdata" name="Location" placeholder="Location" formControlName="Location">
+        <input type="date" id="Date" class="formdata" name="Date" placeholder="Date" formControlName="Date">
+        <input type="text" id="User_ID" class="formdata" name="User_ID" placeholder="User ID" formControlName="User_ID">
+        <button type="submit" class="btn btn-success login" value="Submit Ticket">Edit</button>
+      </form>
+</div>
 
