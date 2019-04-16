@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}\\proxy.conf.json",
-            "preLaunchTask": "tsc: build - tsconfig.json",
+            "preLaunchTask": "ng serve",
             "outFiles": [
                 "${workspaceFolder}/dist/out-tsc/**/*.js"
             ]

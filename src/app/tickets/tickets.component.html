@@ -1,7 +1,7 @@
 <form [formGroup]="ticketForm" (ngSubmit)='createticket()' method="POST" (added) ="gettickets($event)">
   <input type="text" id="Issue" class="" name="Issue" placeholder="Issue" formControlName="Issue">
   <input type="text" id="Location" class="" name="Location" placeholder="Location" formControlName="Location">
-  <input type="date" id="Date" class="" name="Date" placeholder="Date" formControlName="Date">
+  <input type="datetime" id="Date" class="" name="Date" placeholder="Date" formControlName="Date">
   <input type="text" id="User_ID" class="" name="User_ID" placeholder="User ID" formControlName="User_ID">
   <button type="submit" class="fadeIn fourth btn btn-success login" value="Submit Ticket">Submit</button>
 </form>
@@ -20,7 +20,7 @@
     <tbody >
         <tr class="ticketdata" *ngFor="let ticket of tickets">
           <td class="ticketdata">
-            <a id='editticket' (click)="EditTicket=true;tickettoedit=ticket">{{ticket._id}}</a>
+            <a id='editticket' (click)="EditTicket=true;tickettoedit=ticket;editticket();">{{ticket._id}}</a>
           </td>
           <td class="ticketdata">{{ ticket.Issue}}</td>
           <td class="ticketdata">{{ ticket.Location}}</td>
@@ -31,10 +31,14 @@
   </table>
 </div>  
 <div class="ticketeditor" *ngIf='iseditticket()'>
-    <form [formGroup]="ticketForm" (ngSubmit)='editticket()' method="POST" (added)="gettickets($event)">
+    <form [formGroup]="editTicketForm" (ngSubmit)='submitedit()' method="POST" (added)="gettickets($event)" class="ticketForm">
+        <label for="Issue">Issue: </label>
         <input type="text" id="Issue" class="formdata" name="Issue" placeholder="Issue" formControlName="Issue">
+        <label for="Location">Location: </label>
         <input type="text" id="Location" class="formdata" name="Location" placeholder="Location" formControlName="Location">
+        <label for="Date">Date: </label>
         <input type="date" id="Date" class="formdata" name="Date" placeholder="Date" formControlName="Date">
+        <label for="User_ID">User ID: </label>
         <input type="text" id="User_ID" class="formdata" name="User_ID" placeholder="User ID" formControlName="User_ID">
         <button type="submit" class="btn btn-success login" value="Submit Ticket">Edit</button>
       </form>

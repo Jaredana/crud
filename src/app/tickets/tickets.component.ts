@@ -15,7 +15,13 @@ export class TicketsComponent implements OnInit {
     Date: new FormControl(''),
     User_ID: new FormControl(''),
   });
-
+  editTicketForm = new FormGroup({
+    ID: new FormControl(''),
+    Issue: new FormControl(''),
+    Location: new FormControl(''),
+    Date: new FormControl(''),
+    User_ID: new FormControl(''),
+  });
   @Output() added: EventEmitter<any> = new EventEmitter(true);
 
   constructor(private TicketService: TicketsService) {}
@@ -75,7 +81,22 @@ export class TicketsComponent implements OnInit {
     return true;
   }
   editticket(){
-    if(this.EditTicket == true) console.log('editing ticket' + JSON.stringify(this.tickettoedit.Issue));
-    this.ticketForm.get('Issue').setValue(JSON.stringify(this.tickettoedit.Issue))
+    if(this.EditTicket == true) 
+      console.log('editing ticket ' + JSON.stringify(this.tickettoedit._id))
+    this.editTicketForm.get('Issue').setValue(JSON.stringify(this.tickettoedit.Issue))
+    this.editTicketForm.get('Location').setValue(JSON.stringify(this.tickettoedit.Location))
+    this.editTicketForm.get('Date').setValue(new Date(this.tickettoedit.Date).toISOString().substring(0,10))
+    this.editTicketForm.get('User_ID').setValue(JSON.stringify(this.tickettoedit.User_ID))
+  }
+  //Will edit tickets thru postman but not webform, need to learn how to debug this angular code...
+  submitedit()
+  {
+  this.TicketService.edittickets(this.tickettoedit._id, this.editTicketForm.get('Issue'), this.editTicketForm.get('Location'), this.editTicketForm.get('Date'), this.editTicketForm.get('User_ID'))
+  .subscribe(
+      (res) => {
+        this.added.emit("we emitted after editing" + JSON.stringify(res));
+    });
+    console.log('ticket update submitted');
+    this.EditTicket = false;
   }
 }
