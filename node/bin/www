@@ -10,7 +10,8 @@ var http = require('http');
 /**
  * Get port from environment and store in Express.
  */
-
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
