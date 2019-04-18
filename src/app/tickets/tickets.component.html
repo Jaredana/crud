@@ -1,11 +1,12 @@
-<form [formGroup]="ticketForm" (ngSubmit)='createticket()' method="POST" (added) ="gettickets($event)">
-  <input type="text" id="Issue" class="" name="Issue" placeholder="Issue" formControlName="Issue">
-  <input type="text" id="Location" class="" name="Location" placeholder="Location" formControlName="Location">
-  <input type="datetime" id="Date" class="" name="Date" placeholder="Date" formControlName="Date">
-  <input type="text" id="User_ID" class="" name="User_ID" placeholder="User ID" formControlName="User_ID">
-  <button type="submit" class="fadeIn fourth btn btn-success login" value="Submit Ticket">Submit</button>
+<form [formGroup]="ticketForm" (ngSubmit)='createticket()' method="POST" (added)="gettickets($event)" class="createticket form-group" ngNativeValidate>
+  <input type="text" id="Issue" class="createticketinput form-control col-3" name="Issue" placeholder="Issue" formControlName="Issue" required>
+  <input type="text" id="Location" class="createticketinput form-control col-2" name="Location" placeholder="Location" formControlName="Location" required>
+  <input type="text" id="User_ID" class="createticketinput form-control col-1" name="User_ID" placeholder="User ID" formControlName="User_ID" required>
+  <button type="submit" class="btn btn-success createticketinput" value="Submit Ticket">Submit</button>
+  <div *ngIf="ticketForm?.errors">
+      Name is required.
+  </div>
 </form>
-
 <div class ="table-responsive" id="sailorTableArea">
   <table id="sailorTable" class="table table-striped table-bordered" width="100%">
     <thead>
@@ -22,25 +23,27 @@
           <td class="ticketdata">
             <a id='editticket' (click)="EditTicket=true;tickettoedit=ticket;editticket();">{{ticket._id}}</a>
           </td>
-          <td class="ticketdata">{{ ticket.Issue}}</td>
-          <td class="ticketdata">{{ ticket.Location}}</td>
-          <td class="ticketdata">{{ ticket.Date | date:'short'}}</td>
-          <td class="ticketdata">{{ ticket.User_ID}}</td>
+          <td class="ticketdata">{{ ticket.Issue }}</td>
+          <td class="ticketdata">{{ ticket.Location }}</td>
+          <td class="ticketdata">{{ ticket.Date | date:'short' }}</td>
+          <td class="ticketdata">{{ ticket.User_ID }}</td>
         </tr>
     </tbody>
   </table>
 </div>  
 <div class="ticketeditor" *ngIf='iseditticket()'>
-    <form [formGroup]="editTicketForm" (ngSubmit)='submitedit()' method="POST" (added)="gettickets($event)" class="ticketForm">
+    <i class="fas fa-times fa-3x" id="exit" (click)="EditTicket=false;"></i>
+    <form [formGroup]="editTicketForm" (ngSubmit)='submitedit()' method="POST" (added)="gettickets($event)" class="ticketForm" ngNativeValidate>
         <label for="Issue">Issue: </label>
-        <input type="text" id="Issue" class="formdata" name="Issue" placeholder="Issue" formControlName="Issue">
+        <input type="text" id="Issue" class="formdata" name="Issue" placeholder="Issue" formControlName="Issue" required>
         <label for="Location">Location: </label>
-        <input type="text" id="Location" class="formdata" name="Location" placeholder="Location" formControlName="Location">
+        <input type="text" id="Location" class="formdata" name="Location" placeholder="Location" formControlName="Location" required>
         <label for="Date">Date: </label>
-        <input type="date" id="Date" class="formdata" name="Date" placeholder="Date" formControlName="Date">
+        <input type="datetime-local" id="Date" class="formdata" name="Date" placeholder="Date" formControlName="Date" required>
         <label for="User_ID">User ID: </label>
-        <input type="text" id="User_ID" class="formdata" name="User_ID" placeholder="User ID" formControlName="User_ID">
-        <button type="submit" class="btn btn-success login" value="Submit Ticket">Edit</button>
+        <input type="text" id="User_ID" class="formdata" name="User_ID" placeholder="User ID" formControlName="User_ID" required>
+        <button type="submit" class="btn btn-success Edit" value="Submit Ticket">Edit</button>
+        <button type="button" class="btn btn-danger Edit" value="Delete Ticket" (click)='deleteticket()'>Delete Ticket</button>
       </form>
 </div>
 

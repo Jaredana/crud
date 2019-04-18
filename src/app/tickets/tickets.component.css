@@ -1,3 +1,13 @@
+.createticket {
+    display: flex;
+    justify-content: flex-start;
+    justify-self: center;
+    flex-direction: row;
+}
+.createticketinput {
+    margin-left: 5px;
+    justify-self: center;
+}
 #sailorTableArea{
     overflow-x: auto;
     overflow-y: auto;
@@ -26,13 +36,15 @@ thead,tbody tr {
 }
 .ticketeditor {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column; 
-    justify-content: baseline;
-    position: absolute;
-    z-index: 999;
+    position: fixed;
+    z-index: 10;
+    top: 10%;
+    background-color: white;
     width: 100%;
-    min-height: 20%;
+    height: 60%;
     padding: 20px;
     box-shadow: 0px 0px 1px 5000px rgba(0,0,0,0.9);
 }
@@ -41,9 +53,25 @@ thead,tbody tr {
     display: flex;
     flex-direction: column;
 }
+.ticketForm > .Edit{
+    width:40%;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
 .formdata {
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-bottom: 10px;
+}
+#exit {
+    display: flex;
+    align-self: flex-end;
+}
+#exit:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
 }

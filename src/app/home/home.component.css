@@ -1,0 +1,27 @@
+.flexbox
+{
+    display: flex;
+    align-content: flex-start;
+    flex-direction: column;
+    background-color: #c7c4c4;
+    margin-top:4px;
+    border: 1px solid black;
+}
+.background {
+    display: flex;
+    background-color: #fdfdfd;
+    height: 94vh;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+.aboutme {
+    width: 100%;
+}
+.techused {
+    width: 100%;
+}
+.learned {
+    width: 100%;
+}
