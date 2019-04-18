@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build --proxy-config proxy.conf.json",
+    "build": "node ./bin/www",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng serve --proxy-config proxy.conf.json"
   },
   "engines": {
     "node": "~10.15.3",
