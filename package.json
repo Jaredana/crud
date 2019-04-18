@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node ./bin/www",
-    "build": "ng build",
+    "build": "npm start --proxy-config proxy.conf.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
