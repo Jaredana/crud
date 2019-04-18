@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "node server.js",
+    "start": "node ./node/server.js",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --output-path tmp"
+    "postinstall": "ng build --output-path dist"
   },
   "engines": {
     "node": "~10.15.3",

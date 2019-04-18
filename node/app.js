@@ -14,7 +14,7 @@ build a form in angular, and link it to register view, so users can be registere
 allow users to be viewed from angular page(pretty much just connect node and angular)
 
 */
-var distDir = __dirname + "/tmp/";
+var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
