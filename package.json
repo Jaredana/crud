@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -12,8 +12,10 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.2.0",
+    "@angular/cli": "~7.3.6",
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
+    "@angular/compiler-cli": "~7.2.0",
     "@angular/core": "~7.2.0",
     "@angular/forms": "~7.2.0",
     "@angular/platform-browser": "~7.2.0",
@@ -23,6 +25,7 @@
     "angular-local-storage": "^0.7.1",
     "bcryptjs": "^2.4.3",
     "core-js": "^2.5.4",
+    "heroku": "^7.22.9",
     "jsonwebtoken": "^8.5.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
@@ -30,8 +33,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.8",
-    "@angular/cli": "~7.3.6",
-    "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
