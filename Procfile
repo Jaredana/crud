@@ -1,2 +1,1 @@
-web: node ./node/server.js
-api: node ./node/bin/www
+web: npm start
