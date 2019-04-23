@@ -11,7 +11,7 @@ build a form in angular, and link it to register view, so users can be registere
 allow users to be viewed from angular page(pretty much just connect node and angular)
 */
 //need to serve index.html in dist to node serer, it is entrance to angular app
-var distDir = path.join('/crud' + '/dist/crud/');
+var distDir = path.join('/app/crud' + '/dist/crud/');
 console.log('directory chose: ' + distDir);
 app.use(express.static(distDir));
 app.use(bodyParser.json());
