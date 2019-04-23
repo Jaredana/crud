@@ -1,6 +1,7 @@
 {
   "name": "crud",
   "version": "0.0.0",
+  "main": "node ./node/bin/www",
   "scripts": {
     "ng": "ng",
     "start": "node ./node/server.js",
