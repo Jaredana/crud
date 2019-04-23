@@ -12,6 +12,7 @@ allow users to be viewed from angular page(pretty much just connect node and ang
 */
 //need to serve index.html in dist to node serer, it is entrance to angular app
 var distDir = path.join('/app/crud' + '/dist/crud/');
+console.log('current directory: ' + __dirname)
 console.log('directory chose: ' + distDir);
 app.use(express.static(distDir));
 app.use(bodyParser.json());
