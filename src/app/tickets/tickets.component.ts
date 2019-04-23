@@ -33,8 +33,8 @@ export class TicketsComponent implements OnInit {
       this.ticketobserve.subscribe(
         (response) => {
           let recieved = JSON.stringify(response.tickets);
-          let array = JSON.parse(recieved);
-          this.tickets = array;
+          //let array = JSON.parse(recieved);
+          this.tickets = recieved;
         })
     }, 10)
 
