@@ -20,5 +20,5 @@ app.use(cookieParser())
 
 app.use('/api/auth', AuthController);
 app.use('/api/ticket', TicketController);
-
+console.log("App.js Has been loaded");
 module.exports = app;
