@@ -32,7 +32,7 @@ export class TicketsComponent implements OnInit {
     setTimeout(()=> {
       this.ticketobserve.subscribe(
         (response) => {
-          let recieved = JSON.stringify(response.tickets);
+          let recieved = JSON.stringify(response.body.ticket);
           //let array = JSON.parse(recieved);
           this.tickets = recieved;
         })
@@ -41,11 +41,12 @@ export class TicketsComponent implements OnInit {
     this.added.subscribe(
       (event) => {
         console.log("Event Fired \n" + event);
+        //Subscribe to ticket grabbing service to refresh tickets on list edit
         this.ticketobserve.subscribe(
           (response) => {
-            let recieved = JSON.stringify(response.tickets);
-            let array = JSON.parse(recieved);
-            this.tickets = array;
+            let recieved = JSON.stringify(response.body.ticket);
+            //let array = JSON.parse(recieved);
+            this.tickets = recieved;
           }, (err) => {
             console.log("err getting tickets" + err);
           })
@@ -59,7 +60,7 @@ export class TicketsComponent implements OnInit {
     console.log("getting tickets...");
     this.ticketobserve.subscribe(
     (response) => {
-      let recieved = JSON.stringify(response.tickets);
+      let recieved = JSON.stringify(response.body.ticket);
       //let array = JSON.parse(recieved);
       this.tickets = recieved;
     }, (err) => {

@@ -32,18 +32,17 @@
   </table>
 </div>  
 <div class="ticketeditor" *ngIf='iseditticket()'>
-    <i class="fas fa-times fa-3x" id="exit" (click)="EditTicket=false;"></i>
-    <form [formGroup]="editTicketForm" (ngSubmit)='submitedit()' method="POST" (added)="gettickets($event)" class="ticketForm" ngNativeValidate>
-        <label for="Issue">Issue: </label>
-        <input type="text" id="Issue" class="formdata" name="Issue" placeholder="Issue" formControlName="Issue" required>
-        <label for="Location">Location: </label>
-        <input type="text" id="Location" class="formdata" name="Location" placeholder="Location" formControlName="Location" required>
-        <label for="Date">Date: </label>
-        <input type="datetime-local" id="Date" class="formdata" name="Date" placeholder="Date" formControlName="Date" required>
-        <label for="User_ID">User ID: </label>
-        <input type="text" id="User_ID" class="formdata" name="User_ID" placeholder="User ID" formControlName="User_ID" required>
-        <button type="submit" class="btn btn-success Edit" value="Submit Ticket">Edit</button>
-        <button type="button" class="btn btn-danger Edit" value="Delete Ticket" (click)='deleteticket()'>Delete Ticket</button>
-      </form>
+  <i class="fas fa-times fa-3x" id="exit" (click)="EditTicket=false;"></i>
+  <form [formGroup]="editTicketForm" (ngSubmit)='submitedit()' method="POST" (added)="gettickets($event)" class="ticketForm" ngNativeValidate>
+      <label for="Issue">Issue: </label>
+      <input type="text" id="Issue" class="formdata" name="Issue" placeholder="Issue" formControlName="Issue" required>
+      <label for="Location">Location: </label>
+      <input type="text" id="Location" class="formdata" name="Location" placeholder="Location" formControlName="Location" required>
+      <label for="Date">Date: </label>
+      <input type="datetime-local" id="Date" class="formdata" name="Date" placeholder="Date" formControlName="Date" required>
+      <label for="User_ID">User ID: </label>
+      <input type="text" id="User_ID" class="formdata" name="User_ID" placeholder="User ID" formControlName="User_ID" required>
+      <button type="submit" class="btn btn-success Edit" value="Submit Ticket">Edit</button>
+      <button type="button" class="btn btn-danger Edit" value="Delete Ticket" (click)='deleteticket()'>Delete Ticket</button>
+  </form>
 </div>
-
