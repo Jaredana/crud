@@ -10,6 +10,7 @@ router.use(bodyParser.json());
 router.get('/getticket', function(req, res) {
     Ticket.find({}, function(err, tickets) {
         if (err) return res.status(500).send("There was a problem finding the tickets.");
+        //Somehow we are running into a parsing error here.
         res.status(200).send({ ticket: tickets });
     });
 });
