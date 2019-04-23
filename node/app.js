@@ -24,7 +24,7 @@ app.get('*', (req,res) => {
 });
 //urls must have /api/ in front due to proxy config'd in angular app(to deal with CORS)
 
-app.use('/', AuthController);
+
 app.use('/api/auth', AuthController);
 app.use('/api/ticket', TicketController);
 module.exports = app;
