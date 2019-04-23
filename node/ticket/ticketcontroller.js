@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 router.get('/getticket', function(req, res) {
     Ticket.find({}, function(err, tickets) {
         if (err) return res.status(500).send("There was a problem finding the tickets.");
-        res.status(200).send({ tickets: 'ticket' });
+        res.status(200).send({ ticket: tickets });
     });
 });
 
@@ -24,7 +24,7 @@ router.post('/maketicket', function(req, res, next) {
     },
     function(err, ticket) {
         if(err) return res.status(500).send("We couldnt create the ticket")
-        res.status(200).send({ticket: 'ticket'})
+        res.status(200).send({ticket: ticket})
     });
 });
 router.post('/editticket', function(req, res) {
