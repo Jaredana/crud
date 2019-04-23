@@ -1,4 +1,4 @@
-<form [formGroup]="ticketForm" (ngSubmit)='createticket()' method="POST" (added)="gettickets($event)" class="createticket form-group" ngNativeValidate>
+<form [formGroup]="ticketForm" (ngSubmit)='createticket()' method="POST" (added)="gettickets()" class="createticket form-group" ngNativeValidate>
   <input type="text" id="Issue" class="createticketinput form-control col-3" name="Issue" placeholder="Issue" formControlName="Issue" required>
   <input type="text" id="Location" class="createticketinput form-control col-2" name="Location" placeholder="Location" formControlName="Location" required>
   <input type="text" id="User_ID" class="createticketinput form-control col-1" name="User_ID" placeholder="User ID" formControlName="User_ID" required>
