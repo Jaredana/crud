@@ -9,7 +9,7 @@ display a login page for root website directory '/'
 build a form in angular, and link it to register view, so users can be registered from angular site
 allow users to be viewed from angular page(pretty much just connect node and angular)
 */
-var distDir = __dirname + "/dist/";
+var distDir = "/crud" + "/dist/";
 console.log('directory chose: ' + distDir);
 app.use(express.static(distDir));
 app.use(bodyParser.json());
