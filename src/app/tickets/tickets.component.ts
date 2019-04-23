@@ -65,7 +65,7 @@ export class TicketsComponent implements OnInit {
       //let array = JSON.parse(recieved);
       this.tickets = recieved;
     }, (err) => {
-      console.log("err getting tickets" + JSON.stringify(err));
+      console.log("err getting tickets " + JSON.stringify(err.error));
     })
   }
   //Maybe change so that instead of user inputted Date, Date is determined upon ticket submission
