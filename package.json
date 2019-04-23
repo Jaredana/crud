@@ -4,7 +4,7 @@
   "main": "node ./node/bin/www",
   "scripts": {
     "ng": "ng",
-    "start": "node ./node/server.js",
+    "start": "node ./node/bin/www",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
