@@ -60,6 +60,7 @@ export class TicketsComponent implements OnInit {
     console.log("getting tickets...");
     this.ticketobserve.subscribe(
     (response) => {
+      console.log('response was: ' + response)
       let recieved = JSON.stringify(response.body.ticket);
       //let array = JSON.parse(recieved);
       this.tickets = recieved;
