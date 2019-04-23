@@ -17,9 +17,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 
 //urls must have /api/ in front due to proxy config'd in angular app(to deal with CORS)
-
+app.route('/')
+    .get(function(req, res) {
+          res.sendFile(__dirname + '/index.html');
+});
 app.use('/', AuthController);
 app.use('/api/auth', AuthController);
 app.use('/api/ticket', TicketController);
-console.log("App.js Has been loaded");
 module.exports = app;
