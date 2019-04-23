@@ -42,14 +42,7 @@ export class TicketsComponent implements OnInit {
       (event) => {
         console.log("Event Fired \n" + event);
         //Subscribe to ticket grabbing service to refresh tickets on list edit
-        this.ticketobserve.subscribe(
-          (response) => {
-            let recieved = JSON.stringify(response.body.ticket);
-            //let array = JSON.parse(recieved);
-            this.tickets = recieved;
-          }, (err) => {
-            console.log("err getting tickets: " + JSON.stringify(err));
-          })
+        this.gettickets();
     }, (error) =>{
         console.log("Error subscribing to eventemitter" + error);
     })
